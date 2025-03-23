@@ -1,0 +1,159 @@
+@define-color base   #1e1e2e;
+@define-color mantle #181825;
+@define-color crust  #11111b;
+
+@define-color text     #cdd6f4;
+@define-color subtext0 #a6adc8;
+@define-color subtext1 #bac2de;
+
+@define-color surface0 #313244;
+@define-color surface1 #45475a;
+@define-color surface2 #585b70;
+
+@define-color overlay0 #6c7086;
+@define-color overlay1 #7f849c;
+@define-color overlay2 #9399b2;
+
+@define-color blue      #89b4fa;
+@define-color lavender  #b4befe;
+@define-color sapphire  #74c7ec;
+@define-color sky       #89dceb;
+@define-color teal      #94e2d5;
+@define-color green     #a6e3a1;
+@define-color yellow    #f9e2af;
+@define-color peach     #fab387;
+@define-color maroon    #eba0ac;
+@define-color red       #f38ba8;
+@define-color mauve     #cba6f7;
+@define-color pink      #f5c2e7;
+@define-color flamingo  #f2cdcd;
+@define-color rosewater #f5e0dc;
+
+
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: Cantarell, Hack Nerd Font;
+    font-weight: bolder;
+    font-size: 11px;
+    min-height: 10px;
+}
+
+@import "theme.css";
+
+window#waybar {
+    /*background: #1e1e2e;*/
+    background-color: @bar-bg;
+}
+
+#workspaces {
+    padding: 0px;
+    /*background-color: #1e1e2e;*/
+    /*background-color: @crust;*/
+    background-color: rgba(0, 0, 0, 0);
+    /*border: 2px solid #93a1a1;*/
+}
+
+#workspaces button {
+    margin: 0.5px;
+    padding: 0.5px;
+    color: #93a1a1;
+    /*border: 2px solid #1e1e2b;*/
+
+    /* Disable animation on click, GTK has the stupidest defaults */
+    transition-property: none;
+}
+
+#workspaces button:hover {
+    color: #6c7086;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: #1e1e2b;
+    /*background-color: @crust;*/
+}
+
+#workspaces button.active {
+    /*color: #073642;*/
+    color: @mantle;
+    background-color: #93a1a1;
+    /*border: 2px solid #1e1e2b;*/
+}
+
+#workspaces button.selected {
+    /*border: 2px solid #93a1a1;*/
+    background-color: @crust;
+}
+
+#workspaces button.urgent {
+    /*border: 2px solid #dc322f;*/
+}
+
+#workspaces button.selected.urgent {
+    /*border: 2px solid #dc322f;*/
+}
+
+#workspaces button.active.selected {
+    color: #073642;
+    /*background-color: #93a1a1;*/
+    background-color: @crust;
+    border: 2px solid #93a1a1;
+}
+
+.modules-left > widget:first-child > #workspaces {
+    margin-left: 2px;
+    /*background-color: @crust;*/
+    background-color: @bar-bg;
+}
+
+#window,
+#mode,
+#temperature {
+    padding: 1px 5px;
+    margin-left: 8px;
+    /*background-color: #1e1e2b;*/
+    /*background-color: @crust;*/
+    background-color: rgba(0, 0, 0, 0);
+    /*color: #93a1a1;*/
+    color: @text;
+    /*border: 2px solid #93a1a1;*/
+}
+
+
+#clock {
+  color: @text;
+}
+
+#pulseaudio {
+  color: @mauve;
+  margin-right: 15px;
+}
+
+#pulseaudio.muted {
+  color: @surface2;
+}
+
+#network {
+    color: #89b4fa;
+    margin-right: 18px;
+}
+#network.disconnected {
+    color: #585b70;
+}
+
+#battery {
+    color: @green;
+    margin-right: 15px;
+}
+
+#battery.warning:not(.charging) {
+    color: @red;
+}
+
+#temperature {
+    margin-right: 8px;
+}
+
+#clock {
+    /*margin-left: 5px;*/
+    margin-right: 10px;
+}

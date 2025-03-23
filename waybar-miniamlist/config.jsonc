@@ -1,0 +1,103 @@
+
+{
+  "height": 20,
+  "reload_style_on_change": true,
+
+
+// positions generated based on config.ctl
+
+  "modules-left": [
+    "hyprland/workspaces"
+  ],
+  //"modules-center": [
+  //  "clock"
+  //],
+  "modules-center": [
+    "hyprland/window"
+  ],
+  "modules-right": [
+    //"river/mode",
+    //"idle_inhibitor",
+    //"cpu",
+    //"memory",
+    "pulseaudio",
+    "network",
+    "battery",
+    "clock"
+    //"temperature"
+  ],
+  "clock": {
+    "tooltip-format": "{:%A, %B %d, %Y}",
+    "format": "{:%H:%M}"
+  },
+  //"network": {
+  //  "format-wifi": "{essid} {signalStrength}%",
+  //  "format-ethernet": "{ifname}: {ipaddr}/{cidr}",
+  //  "format-linked": "{ifname} (No IP)",
+  //  "format-disconnected": "Disconnected",
+  //  "format-alt": "{ifname}: {ipaddr}/{cidr}",
+  //  "tooltip": false
+  //},
+     "network": {
+        "format-wifi": "󰤨",
+        "format-disconnected": "󰤭",
+				"tooltip-format": "Connected to {essid}",
+				"on-click": "hyprctl dispatch exec '[float]' '$TERMINAL -e nmtui'"
+    },
+  "idle_inhibitor": {
+    "tooltip": false
+  },
+  "cpu": {
+    "format": "Cpu{usage:3}%",
+    "interval": 1,
+    "states": {
+      "warning": 50,
+      "critical": 90
+    },
+    "tooltip": false
+  },
+  "memory": {
+    "format": "Mem {}%",
+    "interval": 1,
+    "states": {
+      "warning": 50,
+      "critical": 90
+    },
+    "tooltip": false
+  },
+  "temperature": {
+    "format": "{temperatureC}°C",
+    "interval": 1,
+    "hwmon-path": "/sys/class/hwmon/hwmon2/temp1_input",
+    "critical-threshold": 80,
+    "tooltip": false
+  },
+  "pulseaudio": {
+        // "scroll-step": 1, // %, can be a float
+        "format": "{icon}",
+        "format-muted": "󰖁",
+        "format-icons": {
+          "default": ["", "", "󰕾"]
+        },
+        "tooltip-format": "{volume}% volume"
+  },
+  "custom/power": {
+    "format": "󰐥",
+    "on-click": "sleep 0.15 && powermenu"
+  },
+  "battery": {
+    "states": {
+      "warning": 20
+    },
+    "format": "{icon}",
+    "format-icons": [ "󰂎", "󰁺", "󰁻", "󰁼", "󰁽", "󰁾", "󰁿", "󰂀", "󰂁", "󰂂", "󰁹" ],
+    "format-charging": "󰂄",
+    "format-warning": "󰂃",
+    "tooltip-format": "{capacity}% capacity"
+  }
+  //"battery": {
+  //  "format": "Bat {}",
+  //  "interval": 1,
+  //  "tooltip": false
+  //}
+}
