@@ -1,0 +1,136 @@
+/* style.css */
+
+* {
+    border: none;
+    border-radius: 0px;
+    font-family: Cantarell, Hack Nerd Font;
+    font-weight: bolder;
+    font-size: 11px;
+    min-height: 10px;
+}
+
+@import "theme.css";
+@import "colors.css";
+
+window#waybar {
+    /*background-color: @crust;*/
+    background-color: @bar-bg;
+}
+
+#tags {
+    padding: 0px;
+    /*background-color: #1e1e2e;*/
+    /*background-color: @crust;*/
+    background-color: rgba(0, 0, 0, 0);
+    /*border: 2px solid #93a1a1;*/
+}
+
+#tags button {
+    margin: 0.5px;
+    padding: 0.5px;
+    color: #93a1a1;
+    /*border: 2px solid #1e1e2b;*/
+
+    /* Disable animation on click, GTK has the stupidest defaults */
+    transition-property: none;
+}
+
+#tags button:hover {
+    color: #6c7086;
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: #1e1e2b;
+    /*background-color: @crust;*/
+}
+
+#tags button.focused {
+    /*color: #073642;*/
+    color: @mantle;
+    background-color: #93a1a1;
+    /*border: 2px solid #1e1e2b;*/
+}
+
+#tags button.occupied {
+    /*border: 2px solid #93a1a1;*/
+    /*background-color: @crust;*/
+}
+
+#tags button.urgent {
+    /*border: 2px solid #dc322f;*/
+}
+
+#tags button.occupied.urgent {
+    /*border: 2px solid #dc322f;*/
+}
+
+#tags button.focused.occupied{
+    /*color: #073642;*/
+    /*background-color: #93a1a1;*/
+    /*background-color: @crust;*/
+    /*border: 2px solid #93a1a1;*/
+}
+
+.modules-left > widget:first-child > #tags {
+    margin-left: 2px;
+    /*background-color: @crust;*/
+    background-color: @bar-bg;
+}
+
+#window,
+#mode,
+#temperature {
+    padding: 1px 5px;
+    margin-left: 8px;
+    /*background-color: #1e1e2b;*/
+    /*background-color: @crust;*/
+    background-color: rgba(0, 0, 0, 0);
+    /*color: #93a1a1;*/
+    color: @text;
+    /*border: 2px solid #93a1a1;*/
+}
+
+
+#clock {
+  color: @text;
+}
+
+#pulseaudio {
+  color: @mauve;
+  margin-right: 15px;
+}
+
+#pulseaudio.muted {
+  color: @surface2;
+}
+
+#network {
+    color: #89b4fa;
+    margin-right: 18px;
+}
+#network.disconnected {
+    color: #585b70;
+}
+
+#battery {
+    color: @green;
+    margin-right: 15px;
+}
+
+#battery.warning:not(.charging) {
+    color: @red;
+}
+
+#temperature {
+    margin-right: 8px;
+}
+
+#clock {
+    /*margin-left: 5px;*/
+    margin-right: 13px;
+}
+
+#custom-power {
+  color: @maroon;
+  font-size: 10px;
+  margin-right: 5px;
+}
