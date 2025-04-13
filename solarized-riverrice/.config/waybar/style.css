@@ -1,0 +1,114 @@
+/**
+ * Solarized Dark colorscheme:
+ *
+ * base03    #002b36 (background)
+ * base02    #073642 (alternate bg)
+ * base00    #657b83 (default fg)
+ * base0     #839496 (light fg)
+ * yellow    #b58900 (warning)
+ * orange    #cb4b16 (urgent)
+ * red       #dc322f (critical)
+ * green     #859900
+ * blue      #268bd2
+ * magenta   #d33682
+ * cyan      #2aa198
+ */
+
+* {
+    border-radius: 0;
+    font-family: Hack, cozette;
+    min-height: 0;
+    font-size: 14px;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0); /* transparent */
+}
+
+#tags {
+    margin-top: 8px;
+    margin-left: 8px;
+    padding: 1px;
+    background-color: #002b36; /* base03 */
+    border: 2px solid #839496; /* base0 */
+}
+
+#tags button {
+    margin: 1px;
+    padding: 1px;
+    color: #839496; /* base0 */
+    border: 2px solid #002b36; /* base03 */
+    transition-property: none;
+}
+
+#tags button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: #002b36;
+}
+
+#tags button.focused {
+    color: #002b36;
+    background-color: #839496;
+    border: 2px solid #002b36;
+}
+
+#tags button.occupied {
+    border: 2px solid #839496;
+}
+
+#tags button.urgent {
+    border: 2px solid #cb4b16; /* orange */
+}
+
+#tags button.occupied.urgent {
+    border: 2px solid #cb4b16;
+}
+
+#tags button.focused.occupied {
+    color: #002b36;
+    background-color: #839496;
+    border: 2px solid #839496;
+}
+
+#clock,
+#mode,
+#pulseaudio,
+#cpu,
+#memory,
+#network,
+#idle_inhibitor,
+#temperature {
+    padding: 1px 5px;
+    margin-top: 8px;
+    margin-left: 8px;
+    background-color: #002b36;
+    color: #839496;
+    border: 2px solid #839496;
+}
+
+#battery {
+    padding: 1px 5px;
+    margin-top: 8px;
+    margin-left: 8px;
+    background-color: #002b36;
+    color: #839496;
+    border: 2px solid #839496;
+    margin-right: 8px;
+}
+
+#clock {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#cpu.warning,
+#memory.warning {
+    border: 2px solid #b58900; /* yellow */
+}
+
+#cpu.critical,
+#memory.critical,
+#temperature.critical {
+    border: 2px solid #dc322f; /* red */
+}
