@@ -63,7 +63,7 @@
     "format": "bat {capacity}%",
     "format-charging": "char {capacity}%",
     "format-alt": "bat {capacity}%",
-    "on-click": "waylock -init-color 0x282828 -input-color 0x83a598 -fail-color 0xfb4934 -ignore-empty-password",
+    "on-click": "waylock -ignore-empty-password",
     "on-scroll-up": "brightnessctl set 1%+",
     "on-scroll-down": "brightnessctl set 1%-",
     "interval": 1,
