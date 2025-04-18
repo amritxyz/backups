@@ -1,0 +1,28 @@
+# configuration file for mako
+
+font=cozette 9
+
+background-color=#1d2021
+text-color=#928374
+border-color=#928374
+
+border-size=2
+
+ignore-timeout=1
+default-timeout=1000
+margin=8
+
+[hidden]
+format=(and %h more)
+text-color=#586e75
+border-color=#586e75
+
+[urgency=normal]
+background-color=#1d2021
+border-color=#d65d0e
+default-timeout=4000
+
+[urgency=critical]
+background-color=#1d2021
+border-color=#dc322f
+default-timeout=8000
