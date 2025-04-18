@@ -10,6 +10,7 @@ riverctl map normal $mod Q close
 
 # spawn some programs
 riverctl map normal $mod W spawn firefox
+riverctl map normal $mod T spawn deluge-gtk
 riverctl map normal $mod+Shift B spawn bleachbit
 riverctl map normal $mod g spawn gimp
 riverctl map normal $mod+Shift N spawn 'foot -e newsboat'
@@ -86,9 +87,9 @@ do
     riverctl map normal $mod+Control $i toggle-focused-tags $tags
     riverctl map normal $mod+Shift+Control $i toggle-view-tags $tags
 done
-tags1to9=$(((1 << 9) - 1))
-riverctl map normal $mod 0 set-focused-tags $tags1to9
-riverctl map normal $mod+Shift 0 set-view-tags $tags1to9
+all_tags=$(((1 << 9) - 1))
+riverctl map normal $mod 0 set-focused-tags $all_tags
+riverctl map normal $mod+Shift 0 set-view-tags $all_tags
 riverctl map normal $mod Tab focus-previous-tags
 riverctl map normal $mod+Mod1 Tab send-to-previous-tags
 
