@@ -1,0 +1,2 @@
+#!/bin/bash
+riverctl keyboard-layout -options 'caps:swapescape' us

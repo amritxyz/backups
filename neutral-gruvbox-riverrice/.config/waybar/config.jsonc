@@ -1,0 +1,72 @@
+{
+  "modules-left": [
+    "river/tags"
+  ],
+  "modules-center": [
+    "clock"
+  ],
+  "modules-right": [
+    // "river/mode",
+    "network",
+    "pulseaudio",
+    "cpu",
+    "memory",
+    "temperature",
+    "battery"
+  ],
+  "clock": {
+    "format": "{:%a %d-%m %T}",
+    "interval": 1,
+    "tooltip": false
+  },
+  "network": {
+    "format-wifi": "{essid} {signalStrength}%",
+    "format-ethernet": "ethernet",
+    "format-disconnected": "disconnected",
+    "tooltip": false
+  },
+  "pulseaudio": {
+    "format": "vol {volume}%",
+    "format-muted": "vol mute",
+    "on-click-right": "wpctl set-volume @DEFAULT_AUDIO_SINK@ 0%",
+    "tooltip": false
+  },
+  "cpu": {
+    "format": "cpu{usage:3}%",
+    "interval": 1,
+    "states": {
+      "warning": 50,
+      "critical": 90
+    },
+    "tooltip": false
+  },
+  "memory": {
+    "format": "mem {}%",
+    "interval": 1,
+    "states": {
+      "warning": 50,
+      "critical": 90
+    },
+    "tooltip": false
+  },
+  "temperature": {
+    "format": "{temperatureC}°C",
+    "interval": 1,
+    "hwmon-path": "/sys/class/hwmon/hwmon5/temp1_input",
+    "critical-threshold": 80,
+    "tooltip": false
+  },
+  "battery": {
+    "states": {
+      "warning": 30
+    },
+    "format": "bat {capacity}%",
+    "format-charging": "char {capacity}%",
+    "format-alt": "bat {capacity}%",
+    "on-click": "waylock -init-color 0x1d2021 -input-color 0x323a40 -fail-color 0x4a1e1e -ignore-empty-password",
+    "on-scroll-up": "brightnessctl set 1%+",
+    "on-scroll-down": "brightnessctl set 1%-",
+    "interval": 1,
+    "tooltip": false
+  }
+}

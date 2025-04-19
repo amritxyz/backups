@@ -1,0 +1,117 @@
+/**
+ * Gruvbox Dark colorscheme:
+ *
+ * dark0_hard    #1d2021 (background)
+ * dark0         #282828 (alternate bg)
+ * dark1         #3c3836 (darker bg)
+ * dark2         #504945 (lighter bg)
+ * dark3         #665c54 (light bg)
+ * dark4         #7c6f64 (very light bg)
+ * neutral_red    #fb4934 (critical)
+ * neutral_orange #fe8019 (urgent)
+ * neutral_yellow #fabd2f (warning)
+ * neutral_green  #b8bb26
+ * neutral_blue   #83a598
+ * neutral_purple #d3869b
+ * neutral_aqua   #8ec07c
+ * neutral_gray   #928374
+ */
+
+* {
+    border-radius: 0;
+    font-family: Hack, cozette;
+    min-height: 0;
+    font-size: 14px;
+}
+
+window#waybar {
+    background-color: rgba(0, 0, 0, 0);
+}
+
+#tags {
+    margin-top: 8px;
+    margin-left: 8px;
+    padding: 1px;
+    background-color: #1d2021;
+    border: 2px solid #928374;
+}
+
+#tags button {
+    margin: 1px;
+    padding: 1px;
+    color: #928374;
+    border: 2px solid #1d2021;
+    transition-property: none;
+}
+
+#tags button:hover {
+    box-shadow: inherit;
+    text-shadow: inherit;
+    background: #1d2021;
+}
+
+#tags button.focused {
+    color: #1d2021;
+    background-color: #928374;
+    border: 2px solid #1d2021;
+}
+
+#tags button.occupied {
+    border: 2px solid #928374;
+}
+
+#tags button.urgent {
+    border: 2px solid #fe8019;
+}
+
+#tags button.occupied.urgent {
+    border: 2px solid #fe8019;
+}
+
+#tags button.focused.occupied {
+    color: #1d2021;
+    background-color: #928374;
+    border: 2px solid #928374;
+}
+
+#clock,
+#mode,
+#pulseaudio,
+#cpu,
+#memory,
+#network,
+#idle_inhibitor,
+#temperature {
+    padding: 1px 5px;
+    margin-top: 8px;
+    margin-left: 8px;
+    background-color: #1d2021;
+    color: #928374;
+    border: 2px solid #928374;
+}
+
+#battery {
+    padding: 1px 5px;
+    margin-top: 8px;
+    margin-left: 8px;
+    background-color: #1d2021;
+    color: #928374;
+    border: 2px solid #928374;
+    margin-right: 8px;
+}
+
+#clock {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+#cpu.warning,
+#memory.warning {
+    border: 2px solid #fabd2f;
+}
+
+#cpu.critical,
+#memory.critical,
+#temperature.critical {
+    border: 2px solid #fb4934;
+}

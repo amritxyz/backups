@@ -1,0 +1,21 @@
+#!/bin/bash
+
+export WM="river"
+export WL="waylock -init-color 0x1d2021 -input-color 0x323a40 -fail-color 0x4a1e1e -ignore-empty-password"
+export CTL='systemctl'
+
+choice=$(printf "lock\nsleep\nlogout\nreboot\nshutdown" | \
+	fuzzel -p 'Action: ' \
+	-b 282828cc -t 928374ff -m d79921ff -s 3c3836cc \
+	-B 2 -r 0 -C 928374ff --font Hack -I -D no \
+	-l 5 --cache=/dev/null --dmenu
+)
+
+case "$choice" in
+	'lock') $WL ;;
+	'sleep') $CTL suspend && $WL ;;
+	"logout") pkill -SIGKILL $WM ;;
+	'reboot') reboot ;;
+	'shutdown') poweroff ;;
+	*) exit 1 ;;
+esac
