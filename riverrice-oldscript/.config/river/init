@@ -1,0 +1,156 @@
+#!/bin/sh
+
+mod='Mod4'
+
+# spawn terminal
+riverctl map normal $mod Return spawn foot
+
+# close the focused view
+riverctl map normal $mod Q close
+
+# spawn some programs
+riverctl map normal $mod W spawn firefox
+riverctl map normal $mod T spawn deluge-gtk
+riverctl map normal $mod+Shift B spawn bleachbit
+riverctl map normal $mod g spawn gimp
+riverctl map normal $mod+Shift N spawn 'foot -e newsboat'
+riverctl map normal $mod Escape spawn 'foot -T top -e sh -c "pkill -SIGKILL htop || htop"'
+riverctl map normal $mod N spawn 'foot -e nvim'
+riverctl map normal $mod I spawn 'foot -e lf'
+riverctl map normal $mod P spawn 'foot -T top -e sh -c "pkill -SIGKILL pulsemixer || pulsemixer"'
+riverctl map normal $mod+Shift W spawn 'foot -e sh -c "pkill -SIGKILL nmtui || nmtui"'
+
+# riverctl map normal $mod D spawn 'tofi-drun --drun-launch=true'
+riverctl map normal $mod D spawn 'pkill -SIGKILL fuzzel || ~/.local/bin/fuzzel.sh'
+riverctl map normal $mod O spawn 'pkill -SIGKILL fuzzel || ~/.local/bin/snippet.sh'
+riverctl map normal $mod+Shift O spawn 'pkill -SIGKILL fuzzel || ~/.local/bin/key.sh'
+riverctl map normal $mod+Shift F spawn '~/.local/bin/grim.sh'
+riverctl map normal $mod+Shift X spawn '~/.local/bin/caps_esc'
+
+riverctl map normal $mod Backspace spawn 'sh -c "pkill -SIGKILL wf-recorder; pkill -SIGKILL ffmpeg"'
+riverctl map normal $mod B spawn 'sh -c "pkill -SIGKILL waybar || waybar"'
+riverctl map normal $mod M spawn 'sh -c "pkill -SIGKILL swaybg && riverctl background-color 0x000000 || ~/.config/river/wall.sh"'
+
+riverctl map normal Mod1+Shift B spawn '~/.local/bin/blue.sh || pkill -SIGKILL fuzzel'
+riverctl map normal $mod+Shift Q spawn '~/.local/bin/syslock 2>/dev/null || pkill -SIGKILL fuzzel'
+
+riverctl map normal Mod1 P spawn 'brightnessctl set -e4 10%+'
+riverctl map normal Mod1 L spawn 'brightnessctl set -e4 10%-'
+
+# focus next/previous clients in the layout stack
+riverctl map normal $mod J focus-view next
+riverctl map normal $mod K focus-view previous
+
+# move clients in the layout stack
+riverctl map normal $mod+Shift J swap next
+riverctl map normal $mod+Shift K swap previous
+
+# output focus, etc.
+riverctl map normal $mod Period focus-output next
+riverctl map normal $mod Comma focus-output previous
+riverctl map normal $mod+Shift Period send-to-output next
+riverctl map normal $mod+Shift Comma send-to-output previous
+
+# toggle focused view
+riverctl map normal $mod Space zoom
+
+# main factor/count
+riverctl map normal $mod H send-layout-cmd rivertile 'main-ratio -0.05'
+riverctl map normal $mod L send-layout-cmd rivertile 'main-ratio +0.05'
+riverctl map normal $mod+Shift H send-layout-cmd rivertile 'main-count +1'
+riverctl map normal $mod+Shift L send-layout-cmd rivertile 'main-count -1'
+
+# move/snap/resize views
+riverctl map normal $mod+Mod1 H move left 50
+riverctl map normal $mod+Mod1 J move down 50
+riverctl map normal $mod+Mod1 K move up 50
+riverctl map normal $mod+Mod1 L move right 50
+riverctl map normal $mod+Mod1+Control H snap left
+riverctl map normal $mod+Mod1+Control J snap down
+riverctl map normal $mod+Mod1+Control K snap up
+riverctl map normal $mod+Mod1+Control L snap right
+riverctl map normal $mod+Mod1+Shift H resize horizontal -50
+riverctl map normal $mod+Mod1+Shift J resize vertical 50
+riverctl map normal $mod+Mod1+Shift K resize vertical -50
+riverctl map normal $mod+Mod1+Shift L resize horizontal 50
+
+# move/resize/toggle
+riverctl map-pointer normal $mod BTN_LEFT move-view
+riverctl map-pointer normal $mod BTN_RIGHT resize-view
+riverctl map-pointer normal $mod BTN_MIDDLE toggle-float
+
+# Tags
+for i in $(seq 1 9)
+do
+    tags=$((1 << ($i - 1)))
+    riverctl map normal $mod $i set-focused-tags $tags
+    riverctl map normal $mod+Shift $i set-view-tags $tags
+    riverctl map normal $mod+Control $i toggle-focused-tags $tags
+    riverctl map normal $mod+Shift+Control $i toggle-view-tags $tags
+done
+all_tags=$(((1 << 9) - 1))
+riverctl map normal $mod 0 set-focused-tags $all_tags
+riverctl map normal $mod+Shift 0 set-view-tags $all_tags
+riverctl map normal $mod Tab focus-previous-tags
+riverctl map normal $mod+Mod1 Tab send-to-previous-tags
+
+# toggle float/fullscreen
+riverctl map normal $mod R toggle-float
+riverctl map normal $mod F toggle-fullscreen
+
+# change layout orientation
+riverctl map normal $mod Up    send-layout-cmd rivertile 'main-location top'
+riverctl map normal $mod Right send-layout-cmd rivertile 'main-location right'
+riverctl map normal $mod Down  send-layout-cmd rivertile 'main-location bottom'
+riverctl map normal $mod Left  send-layout-cmd rivertile 'main-location left'
+
+for mode in normal locked
+do
+    riverctl map $mode None XF86Eject spawn 'eject -T'
+
+    riverctl map $mode None XF86AudioRaiseVolume  spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%+'
+    riverctl map $mode None XF86AudioLowerVolume  spawn 'wpctl set-volume @DEFAULT_AUDIO_SINK@ 10%-'
+    riverctl map $mode None XF86AudioMute         spawn 'wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle'
+    riverctl map $mode None XF86AudioMicMute      spawn 'pactl set-source-mute @DEFAULT_SOURCE@ toggle'
+
+    riverctl map $mode None XF86AudioMedia spawn 'playerctl play-pause'
+    riverctl map $mode None XF86AudioPlay  spawn 'playerctl play-pause'
+    riverctl map $mode None XF86AudioPrev  spawn 'playerctl previous'
+    riverctl map $mode None XF86AudioNext  spawn 'playerctl next'
+
+    riverctl map $mode None XF86MonBrightnessUp   spawn 'brightnessctl set -e4 10%+'
+    riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set -e4 10%-'
+done
+
+# riverctl background-color 0x000000
+# riverctl border-color-focused 0xebdbb2
+riverctl border-color-focused 0x3c3836
+riverctl border-color-unfocused 0x282828
+
+riverctl keyboard-layout -options 'compose:ralt' us
+riverctl set-repeat 50 300
+
+riverctl rule-add ssd
+riverctl rule-add -app-id float float
+riverctl rule-add -app-id 'xdg-desktop-portal*' float
+riverctl rule-add -app-id foot -title 'top' float
+riverctl close-view -title 'top'
+riverctl rule-add -app-id 'imv*' float
+riverctl rule-add -app-id 'mpv*' float
+riverctl rule-add -app-id 'gimp*' tags 128
+riverctl rule-add -app-id 'org.pwmt.zathura*' float
+
+riverctl hide-cursor timeout 5000
+riverctl hide-cursor when-typing enabled
+riverctl xcursor-theme Adwaita
+
+systemctl --user import-environment WAYLAND_DISPLAY XDG_CURRENT_DESKTOP MOZ_ENABLE_WAYLAND=1
+dbus-update-activation-environment --systemd WAYLAND_DISPLAY XDG_CURRENT_DESKTOP=river MOZ_DBUS_REMOTE=1
+systemctl --user restart xdg-desktop-portal
+
+riverctl default-layout rivertile
+riverctl keyboard-layout -options 'caps:swapescape' us
+rivertile -view-padding 4 -outer-padding 4 &
+foot --server &
+waybar &
+~/.config/river/wall.sh &

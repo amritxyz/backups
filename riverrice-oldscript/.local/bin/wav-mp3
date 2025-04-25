@@ -1,0 +1,4 @@
+#!/bin/bash
+ffmpeg -i $1 -acodec libmp3lame -ab 192k $2
+stty sane
+# reset
