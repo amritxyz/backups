@@ -1,0 +1,95 @@
+* {
+    border: none;
+    border-radius: 0;
+    min-height: 0;
+    font-family: "monospace", "cozette";
+    font-weight: 500;
+    font-size: 14px;
+    padding: 0;
+}
+
+window#waybar {
+    background-color: #073642; /* base02 */
+    border: 2px solid #586e75; /* base01 */
+}
+
+tooltip {
+    background-color: #073642; /* base02 */
+    border: 2px solid #586e75; /* base01 */
+}
+
+#clock,
+#tray,
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio {
+    margin: 6px 6px 6px 0px;
+    padding: 2px 8px;
+}
+
+#tags {
+    background-color: #073642; /* base02 */
+    margin: 6px 0px 6px 6px;
+    border: 2px solid #586e75; /* base01 */
+}
+
+#tags button {
+    all: initial;
+    min-width: 0;
+    box-shadow: inset 0 -3px transparent;
+    padding: 2px 4px;
+    color: #839496; /* base0 */
+}
+
+#tags button.focused {
+    color: #268bd2; /* blue */
+    background-color: #073642; /* base02 */
+}
+
+#tags button.urgent {
+    background-color: #cb4b16; /* orange */
+    color: #073642; /* base02 */
+}
+
+#clock {
+    background-color: #073642; /* base02 */
+    border: 2px solid #586e75; /* base01 */
+    color: #93a1a1; /* base1 */
+}
+
+#tray {
+    background-color: #839496; /* base0 */
+    border: 2px solid #93a1a1; /* base1 */
+}
+
+#battery {
+    background-color: #859900; /* green */
+    border: 2px solid #93a1a1; /* base1 */
+    color: #073642; /* base02 */
+}
+
+#cpu,
+#memory,
+#network,
+#pulseaudio {
+    background-color: #2aa198; /* cyan */
+    border: 2px solid #93a1a1; /* base1 */
+    color: #073642; /* base02 */
+}
+
+#cpu.critical,
+#memory.critical {
+    background-color: #dc322f; /* red */
+    border: 2px solid #93a1a1; /* base1 */
+    color: #073642; /* base02 */
+}
+
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+    background-color: #dc322f; /* red */
+    border: 2px solid #93a1a1; /* base1 */
+    color: #073642; /* base02 */
+}
