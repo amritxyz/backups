@@ -1,0 +1,7 @@
+[binds]
+<Ctrl+p> = prev
+<Ctrl+n> = next
+<Shift+K> = zoom +1%
+<Shift+J> = zoom -1%
+<Escape> = quit
+<R> = reset
