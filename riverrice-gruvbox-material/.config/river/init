@@ -122,7 +122,7 @@ do
     riverctl map $mode None XF86MonBrightnessDown spawn 'brightnessctl set -e4 10%-'
 done
 
-# riverctl background-color 0x000000
+riverctl background-color 0x1d2021
 # riverctl border-color-focused 0xebdbb2
 riverctl border-color-focused 0x3c3836
 riverctl border-color-unfocused 0x282828
