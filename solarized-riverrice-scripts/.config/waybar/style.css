@@ -1,0 +1,82 @@
+/* Global Reset */
+* {
+	border: none;
+	border-radius: 0;
+	min-height: 0;
+	font-family: "monospace", "cozette";
+	font-weight: 600;
+	font-size: 14px;
+	padding: 0;
+	margin: 0;
+}
+
+/* Main Window Styling */
+window#waybar {
+	background-color: #002b36; /* base03 */
+	color: #839496; /* base0 */
+	/* height: 24px; */
+}
+
+/* Tooltip Styling */
+tooltip {
+	background-color: #073642; /* base02 */
+	color: #839496; /* base0 */
+	padding: 4px;
+}
+
+/* Tags Module */
+#tags {
+	background-color: #002b36; /* base03 */
+	padding: 0 4px;
+}
+
+#tags button {
+	all: unset;
+	min-width: 0;
+	padding: 0 4px;
+	color: #839496; /* base0 */
+}
+
+#tags button.focused {
+	color: #268bd2; /* blue */
+	background-color: #002b36; /* base03 */
+}
+
+#tags button.urgent {
+	background-color: #cb4b16; /* orange */
+	color: #002b36; /* base03 */
+}
+
+/* Clock Module */
+#clock {
+	padding: 0 8px;
+}
+
+/* Tray Module */
+#tray {
+	background-color: #002b36; /* base03 */
+	padding: 0 4px;
+}
+
+/* CPU, Memory, Battery, Network, PulseAudio Modules */
+#cpu,
+#memory,
+#battery,
+#network,
+#pulseaudio {
+	padding: 0 8px;
+}
+
+/* Critical States */
+#cpu.critical,
+#memory.critical {
+	color: #dc322f; /* red */
+	background-color: #002b36; /* base03 */
+}
+
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+	color: #dc322f; /* red */
+	background-color: #002b36; /* base03 */
+}

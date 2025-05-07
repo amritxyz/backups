@@ -1,0 +1,16 @@
+#!/bin/bash
+
+if [ -n "$TMUX" ]; then
+	CMD="fzf-tmux --height 40%"
+else
+	CMD="fzf --height 40%"
+fi
+
+TARGET=$(find . -type f -o -type d 2>/dev/null | sh -c "$CMD") || exit 1
+
+if [ -d "$TARGET" ]; then
+	cd "$TARGET" || exit 1
+	exec "${SHELL:-/bin/sh}"
+else
+	exec nvim "$TARGET"
+fi

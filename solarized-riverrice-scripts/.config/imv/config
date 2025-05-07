@@ -1,0 +1,12 @@
+[options]
+background = 002b36
+overlay = false
+overlay_font = monospace:14
+
+[binds]
+<Ctrl+p> = prev
+<Ctrl+n> = next
+<Shift+K> = zoom +1%
+<Shift+J> = zoom -1%
+<Escape> = quit
+<R> = reset
