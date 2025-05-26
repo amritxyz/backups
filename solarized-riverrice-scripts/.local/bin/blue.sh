@@ -1,41 +1,53 @@
 #!/bin/bash
+
+# Quick script to connect or disconnect Bluetooth devices on Unix systems.
+# Shows a list of paired devices using bluetoothctl, lets you pick one with fuzzel,
+# then connects if it's disconnected or disconnects if it's already connected.
+# Uses notify-send to show status messages.
+
 get_device_list() {
 	bluetoothctl devices | awk -F ' ' '{print $3 " " $2}'
 }
-# Display devices using dmenu and get the selected device name
+
+# Display devices using fuzzel
 device_list=$(get_device_list)
 selected_device=$(echo "$device_list" | fuzzel -w 30% \
 	-b 002b36cc -t 586e75ff -M cb4b16ff -m 657b83ff -S 93a1a1ff \
 	-s 073642cc -B 2 -r 0 -C 073642ff --input-color cb4b16ff \
 	--font monospace:size=12 -I -D no --cache=/dev/null --dmenu --lines 2 | awk '{print $1}')
+
+# Exit if nothing picked
 if [ -z "$selected_device" ]; then
-	echo "No device selected."
+	notify-send "No device selected."
 	exit 1
 fi
-# Get the MAC address of the selected device
+
+# Extract MAC for the selected device
 MAC=$(echo "$device_list" | grep "$selected_device" | awk '{print $2}')
+
+# Exit if MAC not found
 if [ -z "$MAC" ]; then
-	echo "Failed to find MAC address for selected device."
+	notify-send "$selected_device..." "Failed to find MAC address."
 	exit 1
 fi
-# Check the connection status of the selected device
+
+# Check current connection state
 connect=$(bluetoothctl info "$MAC" | grep Connected: | awk '{print $2}')
-# Attempt to connect or disconnect based on the connection status
+
+# Decide whether to connect or disconnect
 if [ "$connect" = "no" ]; then
-	echo "Attempting to connect to $selected_device..."
-	if bluetoothctl connect "$MAC"; then
-		echo "Successfully connected to $selected_device"
-	else
-		echo "Failed to connect to $selected_device"
-	fi
+    action="connect"
 elif [ "$connect" = "yes" ]; then
-	echo "Attempting to disconnect from $selected_device..."
-	if bluetoothctl disconnect "$MAC"; then
-		echo "Successfully disconnected from $selected_device"
-	else
-		echo "Failed to disconnect from $selected_device"
-	fi
+    action="disconnect"
 else
-	echo "Unable to determine connection status for $selected_device."
-	exit 1
+    notify-send "$selected_device" "Unknown status"
+    exit 1
+fi
+
+# Do the action
+notify-send "$selected_device" "Attempting to $action..."
+if bluetoothctl "$action" "$MAC"; then
+    notify-send "$selected_device" "Successfully ${action}ed."
+else
+    notify-send "$selected_device" "Failed to $action."
 fi

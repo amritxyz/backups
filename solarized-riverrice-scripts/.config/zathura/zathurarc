@@ -35,6 +35,7 @@ set page-padding 1
 set selection-clipboard clipboard
 set guioptions none
 set statusbar-home-tilde true
+set zoom-step 5
 
 # Gruvbox Material Dark Hard Theme
 set completion-bg "#002b36"
@@ -62,9 +63,3 @@ set index-fg "#839496"
 set index-bg "#002b36"
 set index-active-fg "#859900"
 set index-active-bg "#073642"
-# set highlight-active-color "#a9b665"
-# set highlight-transparency 0.5
-# set tabbar-fg "#d4be98"
-# set tabbar-bg "#1d2021"
-# set tabbar-focus-fg "#d79921"
-# set tabbar-focus-bg "#282828"

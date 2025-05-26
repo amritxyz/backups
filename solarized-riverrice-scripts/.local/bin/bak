@@ -1,4 +1,13 @@
-#!/bin/sh
+#!/bin/bash
+
+# This script creates a backup of a specified directory.
+# It first ensures the necessary directories exist:
+# - /opt/void (main directory)
+# - /opt/void/bak (backup directory)
+# The script checks if the source directory exists,
+# creates a time-stamped tar archive of it,
+# and saves the archive in the backup directory.
+# Usage: ./script.sh <directory-name>
 
 MAIN_DIR="/opt/void"
 BAK_DIR="/opt/void/bak"

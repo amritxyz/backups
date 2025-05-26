@@ -10,3 +10,5 @@ overlay_font = monospace:14
 <Shift+J> = zoom -1%
 <Escape> = quit
 <R> = reset
+<m> = flip horizontal
+<Shift+M> = flip vertical

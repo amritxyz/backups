@@ -1,4 +1,8 @@
 #!/bin/bash
+
+# This script lets you quickly insert a snippet from ~/.local/share/snippets.
+# It uses `fuzzel` for selection and `wtype` to insert the chosen snippet.
+
 # -M ea6962ff
 wtype $(grep -v '^#' ~/.local/share/snippets | fuzzel -w 90% \
 	-b 002b36cc -t 586e75ff -M cb4b16ff -m 657b83ff -S 93a1a1ff \

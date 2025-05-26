@@ -1,29 +1,42 @@
 #!/bin/bash
+
+# This script installs a custom user.js file into the Firefox profile.
+# It first ensures Firefox is running in headless mode to generate the profile,
+# then extracts the active profile directory and copies the custom user.js
+# file into the profile’s directory. The script will terminate Firefox
+# after installation to apply changes.
+#
+# Note: It requires arkenfox.js, which should be located in the ~/.local/share directory.
+# Usage: Simply run the script and it will automatically apply the custom user.js.
+
 # Define Firefox directory and profile location
 browserdir="/home/void/.mozilla/firefox"
 profilesini="$browserdir/profiles.ini"
+
 # Start firefox in headless mode
 if [ ! -f "$profilesini" ]; then
 	sudo -u "$USER" firefox --headless >/dev/null 2>&1 &
 	sleep 1
 fi
+
 # Extract profile directory
 profile=$(sed -n "/Default=.*.default/ s/.*=//p" "$profilesini")
 pdir="$browserdir/$profile"
+
 # Ensure profile directory exists
 if [ -d "$pdir" ]; then
 	# Custom user.js
 	custom_userjs="/home/$USER/.local/share/arkenfox.js"
-    # Check if custom user.js exists
-    if [ -f "$custom_userjs" ]; then
-	    # Install the custom user.js to the Firefox profile
-	    rm -rf $pdir/* && rm -rf $pdir/.parentlock
-	    cp "$custom_userjs" "$pdir/user.js"
-	    pkill firefox
-	    echo "Custom user.js has been installed to the profile."
-    else
-	    echo "Error: ~/.local/share/user.js not found."
-    fi
+	# Check if custom user.js exists
+	if [ -f "$custom_userjs" ]; then
+		# Install the custom user.js to the Firefox profile
+		rm -rf $pdir/* && rm -rf $pdir/.parentlock
+		cp "$custom_userjs" "$pdir/user.js"
+		pkill firefox
+		echo "Custom user.js has been installed to the profile."
+	else
+		echo "Error: ~/.local/share/user.js not found."
+	fi
 else
 	echo "Error: Firefox profile directory not found."
 fi

@@ -1,9 +1,15 @@
 #!/bin/bash
 
+# This script presents a menu of actions (lock, sleep, logout, reboot, shutdown) using `fuzzel`.
+# It then executes the selected action, such as locking the screen, suspending the system,
+# logging out, or rebooting/shutting down the machine.
+
+# For readable script.
 export WM="river"
 export WL="waylock -ignore-empty-password"
 export CTL='systemctl'
 
+# Extract choice from selected options shown through fuzzel.
 choice=$(printf "lock\nsleep\nlogout\nreboot\nshutdown" | \
 	fuzzel -p 'Action: ' \
 	-b 002b36cc -t 586e75ff -M cb4b16ff -m 657b83ff -S 93a1a1ff \
@@ -11,6 +17,7 @@ choice=$(printf "lock\nsleep\nlogout\nreboot\nshutdown" | \
 	--font monospace:size=12 -I -D no -l 5 --cache=/dev/null --dmenu
 )
 
+# Action
 case "$choice" in
 	'lock') $WL ;;
 	'sleep') $CTL suspend && $WL ;;

@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# This script captures a screenshot using `grim` and saves it in a numbered sequence in ~/.local/ss.
+# It allows the user to select a region using `slurp` and automatically increments the filename.
+
 # Directory to save screenshots
 SAVE_DIR=~/.local/ss
 

@@ -4,9 +4,9 @@
 	"height": 15,
 
 	"margin-top": 4,
-	"margin-right": 2,
+	"margin-right": 4,
 	"margin-bottom": 0,
-	"margin-left": 2,
+	"margin-left": 4,
 
 	"modules-left": [
 		"river/tags"
@@ -17,7 +17,7 @@
 	],
 
 	"modules-right": [
-		"tray",
+		// "tray",
 		"cpu",
 		"memory",
 		"battery",
@@ -76,7 +76,9 @@
 		"scroll-step": 5,
 		"max-volume": 150,
 		"format": "VOL {volume}%",
+		"format-muted": "VOL {volume}%",
 		"format-bluetooth": "BT VOL {volume}%",
+		"format-bluetooth-muted": "BT VOL {volume}%",
 		"tooltip": false
 	}
 }

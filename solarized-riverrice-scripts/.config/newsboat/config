@@ -27,7 +27,7 @@ color listfocus black yellow standout bold
 color listnormal_unread blue black
 color listfocus_unread yellow black bold
 color info red black bold
-color article default black
+color article default default
 
 browser linkhandler
 macro , open-in-browser
@@ -41,15 +41,15 @@ macro C set browser "youtube-viewer --comments=%u" ; open-in-browser ; set brows
 macro p set browser "peertubetorrent %u 480" ; open-in-browser ; set browser linkhandler
 macro P set browser "peertubetorrent %u 1080" ; open-in-browser ; set browser linkhandler
 
-highlight all "---.*---" yellow black
-highlight feedlist ".*(0/0))" black black
+highlight all "---.*---" yellow default
+highlight feedlist ".*(0/0))" black default
 highlight article "(^Feed:.*|^Title:.*|^Author:.*)" cyan black bold
 highlight article "(^Link:.*|^Date:.*)" default black
 highlight article "https?://[^ ]+" blue black
 highlight article "^(Title):.*$" yellow black
-highlight article "\\[[0-9][0-9]*\\]" magenta black bold
-highlight article "\\[image\\ [0-9]+\\]" green black bold
-highlight article "\\[embedded flash: [0-9][0-9]*\\]" green black bold
+highlight article "\\[[0-9][0-9]*\\]" magenta default bold
+highlight article "\\[image\\ [0-9]+\\]" green default bold
+highlight article "\\[embedded flash: [0-9][0-9]*\\]" green default bold
 highlight article ":.*\\(link\\)$" cyan black
 highlight article ":.*\\(image\\)$" blue black
-highlight article ":.*\\(embedded flash\\)$" magenta black
+highlight article ":.*\\(embedded flash\\)$" magenta default

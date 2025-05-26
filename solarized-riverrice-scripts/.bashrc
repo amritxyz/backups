@@ -103,7 +103,7 @@ alias jsqlc='javac -cp .:/opt/mysql-connector-j-9.3.0/mysql-connector-j-9.3.0.ja
 alias cam='mpv --untimed --no-cache --no-osc --no-input-default-bindings --profile=low-latency --input-conf=/dev/null --title=webcam $(ls /dev/video[0,2,4,6,8] | tail -n 1)'
 
 # Mirror
-alias mirror='wl-mirror eDP-1'
+alias mirror='wl-present mirror eDP-1'
 
 # Git aliases
 alias g='git'

@@ -1,4 +1,7 @@
 #!/bin/bash
+
+# This script converts an input audio file to MP3 format with a 192k bitrate.
+
 ffmpeg -i $1 -acodec libmp3lame -ab 192k $2
 stty sane
 # reset

@@ -1,19 +1,40 @@
 #!/bin/bash
+
+# This script records audio from the default ALSA device and saves it as a WAV file.
+# The audio files are stored in the ~/.local/audio directory, with each recording
+# being saved using an incremented file number (e.g., 1_aud.wav, 2_aud.wav, etc.).
+# The script checks for existing audio files in the target directory and increments
+# the number for the new recording. It uses `ffmpeg` to capture the audio and apply
+# noise reduction before saving it in WAV format with standard settings.
+
+# Store audio file at desired directory
 TARGET_DIR="$HOME/.local/audio"
+
+# Create a directory if it doesn't exists
 if [ ! -d "$TARGET_DIR" ]; then
 	mkdir -p "$TARGET_DIR"
 fi
+
+# Find the highest existing audio file number
 MAX_NUMBER=$(ls -1 "$TARGET_DIR"/*_aud.wav 2>/dev/null | \
 	awk -F'[_]' '{print $1}' | \
 	awk -F/ '{print $NF}' | \
 	sort -n | \
 	tail -1)
+
+# If no file exists, starts with 0
 if [ -z "$MAX_NUMBER" ]; then
 	MAX_NUMBER=0
 fi
+
+# Increment the file number for the new recording
 NEXT_NUMBER=$((MAX_NUMBER + 1))
+
+# Set the new filename and specify the format
 FILENAME="$TARGET_DIR/${NEXT_NUMBER}_aud.wav"
 # -ac 2 -ar 44100 -ab 192k
+
+# Run ffmpeg
 sleep 2 &&
 	ffmpeg -y \
 	-f alsa -i default \
@@ -21,5 +42,7 @@ sleep 2 &&
 	-ac 2 -ar 44100 -sample_fmt s16 \
 	-strict -2 \
 	"$FILENAME"
+
+# Restore terminal settings
 stty sane
 # reset

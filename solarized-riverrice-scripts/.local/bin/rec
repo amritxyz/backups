@@ -1,19 +1,40 @@
 #!/bin/bash
+
+# This script records a screen capture and saves it as a video file.
+# The video files are stored in the ~/.local/vids directory, and each recording
+# is saved with an incremented file number (e.g., 1_vid.mkv, 2_vid.mkv, etc.).
+# The script checks for existing videos in the target directory and increments
+# the number for the new recording. It uses `wf-recorder` to capture the screen
+# and saves the video in MKV format with audio at 1366x768 resolution.
+
+# Store video file at desired directory
 TARGET_DIR="$HOME/.local/vids"
+
+# Create a directory if it doesn't exists
 if [ ! -d "$TARGET_DIR" ]; then
 	mkdir -p "$TARGET_DIR"
 fi
+
+# Find the highest existing video file number
 MAX_NUMBER=$(ls -1 "$TARGET_DIR"/*_vid.mkv 2>/dev/null | \
 	awk -F'[_]' '{print $1}' | \
 	awk -F/ '{print $NF}' | \
 	sort -n | \
 	tail -1)
+
+# If no file exists, starts with 0
 if [ -z "$MAX_NUMBER" ]; then
 	MAX_NUMBER=0
 fi
+
+# Increment the file number for the new recording
 NEXT_NUMBER=$((MAX_NUMBER + 1))
+
+# Set the new filename, specify the format and set screen resolution
 FILENAME="$TARGET_DIR/${NEXT_NUMBER}_vid.mkv"
 SCREEN_RESOLUTION="1366x768"
+
+# Run wf-recorder
 sleep 2
 wf-recorder --audio -g "$SCREEN_RESOLUTION" -r 24 -f "$FILENAME"
 stty sane
