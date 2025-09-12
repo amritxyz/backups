@@ -1,0 +1,194 @@
+/* Header bars, toolbars, titlebars */
+headerbar,
+.titlebar,
+GtkHeaderBar,
+.toolbar,
+GtkToolbar {
+	background-color: #002b36;
+	color: #fdf6e3;
+	background-image: none;
+	border: none;
+	box-shadow: none;
+}
+
+/* Header bar decorations */
+headerbar.default-decoration {
+	margin-top: -100px;
+	margin-bottom: 50px;
+}
+
+/* Headers (e.g., in dialogs or menus) */
+headerbar {
+	border-bottom: 1px solid #586e75;
+}
+
+/* Buttons */
+button,
+.button,
+GtkButton {
+	background-image: none;
+	background-color: #073642;
+	color: #fdf6e3;
+	border: 1px solid #586e75;
+	border-radius: 4px;
+	padding: 6px 12px;
+	min-width: unset;
+	min-height: unset;
+}
+
+button:hover,
+button:focus,
+GtkButton:hover,
+GtkButton:focus {
+	background-color: #586e75;
+	color: #fdf6e3;
+}
+
+button:active,
+GtkButton:active {
+	background-color: #073642;
+}
+
+button:disabled,
+GtkButton:disabled {
+	background-color: #002b36;
+	color: #839496;
+	border-color: #586e75;
+}
+
+/* Ensure label and icon inside buttons inherit styles */
+button label,
+.button label,
+GtkButton label {
+	background-color: transparent;
+	color: inherit;
+}
+
+button box,
+.button box,
+GtkButton box {
+	background-color: transparent;
+}
+
+button image,
+button image *,
+button svg,
+button svg *,
+button GtkImage,
+button GtkIcon {
+	background-color: transparent;
+}
+
+/* Buttons inside headerbars/toolbars */
+headerbar button,
+GtkHeaderBar button,
+.toolbar button,
+GtkToolbar button {
+	background-color: #073642;
+	color: #fdf6e3;
+	border: 1px solid #586e75;
+	border-radius: 4px;
+}
+
+/* Entries / Text fields */
+entry,
+textview,
+spinbutton {
+	background-color: #002b36;
+	color: #fdf6e3;
+	border: 1px solid #586e75;
+}
+
+entry:disabled {
+	color: #839496;
+}
+
+/* Labels */
+label {
+	color: #fdf6e3;
+}
+
+/* Highlighting selections */
+selection,
+textview selection,
+entry selection {
+	background-color: #93a1a1;
+	color: #002b36;
+}
+
+/* Links */
+a {
+	color: #268bd2;
+}
+
+/* Tooltips */
+tooltip {
+	background-color: #586e75;
+	color: #fdf6e3;
+}
+
+/* Scrollbars */
+scrollbar {
+	background-color: #002b36;
+}
+
+scrollbar slider {
+	background-color: #586e75;
+	border-radius: 4px;
+}
+
+/* Menus */
+menu,
+menuitem,
+.popup,
+.popover,
+GtkMenu,
+GtkMenuItem {
+	background-color: #002b36;
+	color: #fdf6e3;
+}
+
+menuitem:hover,
+GtkMenuItem:hover {
+	background-color: #586e75;
+	color: #fdf6e3;
+}
+
+menuitem,
+GtkMenuItem {
+	padding: 4px 8px;
+}
+
+/* Combo box popup styling */
+combobox popup,
+GtkComboBox popup,
+combobox box,
+GtkComboBoxBox {
+	background-color: #002b36;
+	color: #fdf6e3;
+	border: 1px solid #586e75;
+	border-radius: 4px;
+}
+
+/* General window and background */
+window,
+.background,
+GtkWindow,
+GtkWidget,
+* {
+	background-color: #002b36;
+	color: #fdf6e3;
+}
+
+/* .sidebar .view:selected, */
+/* .sidebar .list:selected, */
+/* .sidebar row:selected, */
+/* .sidebar row:selected label { */
+/* 	background-color: #586e75; */
+/* 	color: #fdf6e3; */
+/* } */
+/**/
+/* .sidebar row:selected image { */
+/* 	color: #fdf6e3; */
+/* 	background-color: #586e75; */
+/* } */
